@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -24,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', productRoutes);
 app.use('/', orderRoutes);
-app.use((req, res, next) => {
+app.use((_req, _res, next) => {
   next(new NotFoundError('Маршрут не найден'));
 });
 app.use(errorLogger);

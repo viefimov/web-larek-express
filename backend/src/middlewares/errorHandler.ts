@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CelebrateError } from 'celebrate';
 import { Error as MongooseError } from 'mongoose';
 import { Request, Response, NextFunction } from 'express';
 
 const errorHandler = (
   err: any,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) => {
   if (err instanceof CelebrateError) {
     const errorDetails = Array.from(err.details.values())

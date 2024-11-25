@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import { faker } from '@faker-js/faker';
 import Product from '../models/product';
@@ -10,22 +9,8 @@ const createOrder = (
   next: NextFunction,
 ) => {
   const {
-    payment, email, phone, address, total, items,
+    total, items,
   } = req.body;
-
-  if (!payment || !email || !phone || !address || !total || !items) {
-    return next(new BadRequestError('Все поля обязательны'));
-  }
-
-  if (!['card', 'online'].includes(payment)) {
-    return next(new BadRequestError('Недопустимый тип оплаты'));
-  }
-
-  if (!Array.isArray(items) || items.length === 0) {
-    return next(
-      new BadRequestError('Поле items должно быть непустым массивом'),
-    );
-  }
 
   Product.find({ _id: { $in: items } })
     .then((products) => {

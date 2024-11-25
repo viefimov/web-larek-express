@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable consistent-return */
 import { Request, Response, NextFunction } from 'express';
 import Product from '../models/product';
 import { BadRequestError, ConflictError, InternalServerError } from '../errors';
 
 export const getAllProducts = (
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction,
 ) => {
